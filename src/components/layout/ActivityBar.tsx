@@ -28,6 +28,10 @@ export default function ActivityBar() {
   ];
 
   const handleItemClick = (item: NavItem) => {
+    if (item.id === 'home' || item.label.includes('Search')) {
+      setCommandPaletteOpen(true);
+      return;
+    }
     if (panel === item.id && isSidebarOpen && !item.view) {
       toggleSidebar();
     } else {

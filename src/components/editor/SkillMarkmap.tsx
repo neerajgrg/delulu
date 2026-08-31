@@ -87,6 +87,24 @@ const SkillMarkmap: React.FC<SkillMarkmapProps> = ({ content, className = '' }) 
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to generate Markmap');
     }
+
+    return () => {
+      if (svgRef.current) {
+        try {
+          d3.select(svgRef.current).interrupt();
+        } catch {
+          // ignore
+        }
+      }
+      if (markmapRef.current) {
+        try {
+          markmapRef.current.destroy?.();
+        } catch {
+          // ignore
+        }
+        markmapRef.current = null;
+      }
+    };
   }, [formattedMarkdown]);
 
   // Handle container resize

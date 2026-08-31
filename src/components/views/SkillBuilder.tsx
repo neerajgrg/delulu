@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { useStore } from '../../store/useStore';
 import { SKILL_TEMPLATES } from '../../lib/skillTemplateCatalog';
 import { generateSkillMarkdown } from '../../lib/skillMarkdown';
@@ -26,7 +26,9 @@ export default function SkillBuilder() {
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const folderName = workspaceFolder ? workspaceFolder.split('/').pop() : 'workspace';
+  const folderName = workspaceFolder
+    ? workspaceFolder.replace(/\/+$/, '').split('/').pop() || 'workspace'
+    : 'workspace';
 
   const handleSelectTemplate = (tplId: string) => {
     setSelectedTemplate(tplId);

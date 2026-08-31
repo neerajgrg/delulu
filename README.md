@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/neerajgrg/delulu/main/public/delulu-logo.svg" alt="Delulu Logo" width="96" height="96" onerror="this.style.display='none'" />
+<img src="./public/delulu-logo.svg" alt="Delulu Logo" width="96" height="96" />
 
 **The Universal Open-Source IDE & Benchmark Studio for AI Agent Skills**
 

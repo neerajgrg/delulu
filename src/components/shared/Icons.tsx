@@ -158,10 +158,12 @@ export const KeyIcon: React.FC<IconProps> = ({ size = 16, className = '', ...pro
   </svg>
 );
 
-export const TerminalIcon: React.FC<IconProps> = ({ size = 16, className = '', ...props }) => (
+export const SaveIcon: React.FC<IconProps> = ({ size = 16, className = '', ...props }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}>
-    <polyline points="4 17 10 11 4 5" />
-    <line x1="12" x2="20" y1="19" y2="19" />
+    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+    <polyline points="17 21 17 13 7 13 7 21" />
+    <polyline points="7 3 7 8 15 8" />
   </svg>
 );
+
 

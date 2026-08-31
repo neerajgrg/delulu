@@ -6,7 +6,8 @@
 
 **The Universal Open-Source IDE & Benchmark Studio for AI Agent Skills**
 
-[![Docs](https://img.shields.io/badge/Docs-GitHub_Pages-6366f1?style=flat-square&logo=githubpages&logoColor=white)](https://neerajgrg.github.io/delulu/)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-delulu.app-10b981?style=flat-square&logo=vercel&logoColor=white)](https://neerajgrg.github.io/delulu/)
+[![Docs](https://img.shields.io/badge/Docs-GitHub_Pages-6366f1?style=flat-square&logo=githubpages&logoColor=white)](https://neerajgrg.github.io/delulu/docs/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5+-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
@@ -15,7 +16,7 @@
 [![Electron](https://img.shields.io/badge/Electron-31-47848F?style=flat-square&logo=electron&logoColor=white)](https://www.electronjs.org/)
 [![Agent Standards](https://img.shields.io/badge/Agents-Claude%20%7C%20Gemini%20%7C%20Cursor%20%7C%20Ollama-7c3aed?style=flat-square)](https://github.com/neerajgrg/delulu)
 
-[📚 Documentation Site](https://neerajgrg.github.io/delulu/) • [Features](#-key-features) • [Quick Start](#-quick-start) • [Universal Skill Standard](#-universal-skill-standard) • [Contributing](#-contributing) • [License](#-license)
+[🚀 **Launch Live Demo IDE**](https://neerajgrg.github.io/delulu/) • [📚 Documentation Portal](https://neerajgrg.github.io/delulu/docs/) • [Features](#-key-features) • [Quick Start](#-quick-start) • [Universal Skill Standard](#-universal-skill-standard) • [Contributing](#-contributing) • [License](#-license)
 
 </div>
 

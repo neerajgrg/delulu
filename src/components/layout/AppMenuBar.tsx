@@ -293,7 +293,7 @@ export default function AppMenuBar() {
         {
           id: 'help-welcome',
           label: 'Delulu Documentation & Quickstart',
-          onClick: () => window.open('https://neerajgrg.github.io/delulu/', '_blank'),
+          onClick: () => window.open('https://neerajgrg.github.io/delulu/docs/', '_blank'),
         },
         {
           id: 'help-shortcuts',

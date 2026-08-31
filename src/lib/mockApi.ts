@@ -277,7 +277,7 @@ export function setupMockDeluluApi(): void {
           hasSession: true,
           models: ['claude-3-5-sonnet-20241022', 'claude-3-5-haiku-20241022', 'claude-opus-4-5'],
           defaultModel: 'claude-3-5-sonnet-20241022',
-          mcpServers: ['Adobe Wiki Confluence', 'glean_outlook', 'cloudmanager'],
+          mcpServers: ['Documentation Search', 'Glean Workspace', 'Cloud Operations'],
         },
         {
           id: 'gemini',

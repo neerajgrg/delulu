@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delulu AI Skill Studio — Developer Documentation</title>
+  <meta name="description" content="Official developer documentation and contributor guide for Delulu — the open-source IDE and benchmarking studio for AI agent skills.">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Delulu AI Skill Studio — Developer Documentation">
+  <meta property="og:description" content="Author, benchmark, and deploy skills across AI agents (Claude, Gemini, Cursor, Ollama).">
+  <meta property="og:type" content="website">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><defs><linearGradient id='g' x1='4' y1='4' x2='32' y2='32'><stop offset='0%25' stop-color='%2338bdf8'/><stop offset='50%25' stop-color='%236366f1'/><stop offset='100%25' stop-color='%23a855f7'/></linearGradient></defs><path d='M6 6 C6 4.3 7.3 3 9 3 L14 3 C15.7 3 17 4.3 17 6 L17 30 C17 31.7 15.7 33 14 33 L9 33 C7.3 33 6 31.7 6 30 Z' fill='%232563eb'/><path d='M15 3 L23 3 C28.5 3 33 7.5 33 13 C33 18.5 28.5 23 23 23 L15 23 Z' fill='none' stroke='url(%23g)' stroke-width='6' stroke-linejoin='round'/></svg>">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CDN for docs -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Geist', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+            },
+            dark: {
+              bg: '#0e0e12',
+              surface: '#15151b',
+              surface2: '#1c1c24',
+              surface3: '#262632',
+              border: '#2a2a36',
+              text: '#e2e2ec',
+              muted: '#8e8e9f',
+              dim: '#5e5e6e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    html { scroll-behavior: smooth; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0e0e12; }
+    ::-webkit-scrollbar-thumb { background: #262632; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3f3f50; }
+    .code-block { background: #121218; border: 1px solid #2a2a36; border-radius: 8px; }
+  </style>
+</head>
+<body class="bg-dark-bg text-dark-text font-sans antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+
+  <!-- Top Navigation Header -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-dark-bg/90 border-b border-dark-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <a href="#hero" class="flex items-center gap-2.5 group">
+          <svg class="w-7 h-7 transform group-hover:scale-105 transition-transform" viewBox="0 0 36 36">
+            <defs>
+              <linearGradient id="logo-g" x1="4" y1="4" x2="32" y2="32">
+                <stop offset="0%" stop-color="#38bdf8"/>
+                <stop offset="50%" stop-color="#6366f1"/>
+                <stop offset="100%" stop-color="#a855f7"/>
+              </linearGradient>
+            </defs>
+            <path d="M6 6 C6 4.3 7.3 3 9 3 L14 3 C15.7 3 17 4.3 17 6 L17 30 C17 31.7 15.7 33 14 33 L9 33 C7.3 33 6 31.7 6 30 Z" fill="#2563eb"/>
+            <path d="M15 3 L23 3 C28.5 3 33 7.5 33 13 C33 18.5 28.5 23 23 23 L15 23 Z" fill="none" stroke="url(#logo-g)" stroke-width="6" stroke-linejoin="round"/>
+          </svg>
+          <span class="font-extrabold text-lg tracking-tight text-white flex items-center gap-1.5">
+            Delulu <span class="text-xs px-2 py-0.5 rounded-full bg-brand-500/20 text-brand-400 border border-brand-500/30 font-mono font-medium">v0.1.0 Docs</span>
+          </span>
+        </a>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-dark-muted">
+        <a href="#getting-started" class="hover:text-white transition-colors">Getting Started</a>
+        <a href="#skill-standard" class="hover:text-white transition-colors">Skill Standard</a>
+        <a href="#token-budgeting" class="hover:text-white transition-colors">Token Engine</a>
+        <a href="#live-playground" class="hover:text-white transition-colors">Live Preview</a>
+        <a href="#contributing" class="hover:text-white transition-colors">Contributing</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="https://github.com/neerajgrg/delulu" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-dark-surface hover:bg-dark-surface2 border border-dark-border text-sm font-medium text-white transition-all shadow-sm">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Docs Layout -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-10">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="lg:col-span-3 hidden lg:block sticky top-24 h-[calc(100vh-8rem)] overflow-y-auto pr-4 text-sm font-medium">
+      <div class="space-y-6">
+        <div>
+          <h4 class="text-xs uppercase tracking-wider text-dark-dim font-bold mb-3">Getting Started</h4>
+          <ul class="space-y-2 text-dark-muted">
+            <li><a href="#overview" class="hover:text-brand-400 block transition-colors">Overview & Philosophy</a></li>
+            <li><a href="#installation" class="hover:text-brand-400 block transition-colors">Installation & Setup</a></li>
+            <li><a href="#deployment" class="hover:text-brand-400 block transition-colors">Docker & Web Hosting</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-wider text-dark-dim font-bold mb-3">Core Features</h4>
+          <ul class="space-y-2 text-dark-muted">
+            <li><a href="#menubar" class="hover:text-brand-400 block transition-colors">IDE Menubar & Navigation</a></li>
+            <li><a href="#skill-standard" class="hover:text-brand-400 block transition-colors">Universal .skill.md Spec</a></li>
+            <li><a href="#token-budgeting" class="hover:text-brand-400 block transition-colors">Token Counter & Context</a></li>
+            <li><a href="#evals-studio" class="hover:text-brand-400 block transition-colors">AI Evals & Benchmark</a></li>
+            <li><a href="#multi-agent" class="hover:text-brand-400 block transition-colors">Multi-Agent Symlinks</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-wider text-dark-dim font-bold mb-3">Interactive Tools</h4>
+          <ul class="space-y-2 text-dark-muted">
+            <li><a href="#live-playground" class="hover:text-brand-400 block transition-colors">Live Skill Playground</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-wider text-dark-dim font-bold mb-3">Developer Guide</h4>
+          <ul class="space-y-2 text-dark-muted">
+            <li><a href="#architecture" class="hover:text-brand-400 block transition-colors">Codebase Architecture</a></li>
+            <li><a href="#contributing" class="hover:text-brand-400 block transition-colors">Contributing Guidelines</a></li>
+            <li><a href="#api-reference" class="hover:text-brand-400 block transition-colors">Bridge API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="lg:col-span-9 space-y-16">
+      
+      <!-- Hero Section -->
+      <section id="hero" class="relative rounded-2xl bg-gradient-to-br from-dark-surface via-dark-surface2 to-brand-600/10 border border-dark-border p-8 md:p-12 overflow-hidden shadow-2xl">
+        <div class="max-w-3xl space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold">
+            <span>✨ The Open Standard for AI Agent Skills</span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            Developer Documentation & Contributor Guide
+          </h1>
+          <p class="text-base sm:text-lg text-dark-muted leading-relaxed">
+            Delulu is a specialized developer studio for authoring, evaluating, and deploying reusable skill packages across Claude, Gemini, Cursor, and Ollama agent runtimes.
+          </p>
+          <div class="flex flex-wrap gap-3 pt-4">
+            <a href="#installation" class="px-5 py-2.5 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm transition-all shadow-lg shadow-brand-500/25">
+              Get Started in 60s
+            </a>
+            <a href="#skill-standard" class="px-5 py-2.5 rounded-lg bg-dark-surface3 hover:bg-dark-border text-white font-semibold text-sm border border-dark-border transition-all">
+              Explore Skill Standard
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Overview & Philosophy -->
+      <section id="overview" class="space-y-4">
+        <h2 class="text-2xl font-bold text-white tracking-tight border-b border-dark-border pb-3">
+          1. Overview & Architecture Philosophy
+        </h2>
+        <p class="text-dark-muted leading-relaxed">
+          AI agents are rapidly transitioning from simple chatbot prompts into autonomous executors with specific capabilities (skills). However, skill files are often scattered across proprietary folders (<code class="text-brand-400 font-mono text-xs">~/.claude/skills</code>, <code class="text-brand-400 font-mono text-xs">.cursor/skills</code>, <code class="text-brand-400 font-mono text-xs">~/.gemini/skills</code>) with zero version control, no linting, and no visibility into token consumption.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          <div class="p-4 rounded-xl bg-dark-surface border border-dark-border">
+            <div class="text-brand-400 text-lg mb-1">🎯 Single Source of Truth</div>
+            <p class="text-xs text-dark-muted">Store skills centrally in <code class="font-mono text-dark-text">~/.delulu/skills</code> and auto-symlink across every agent environment.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-dark-surface border border-dark-border">
+            <div class="text-brand-400 text-lg mb-1">⚡ Real-Time Token Budgeting</div>
+            <p class="text-xs text-dark-muted">Live BPE token counter and context window analyzer prevents prompt bloat and unnecessary latency.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-dark-surface border border-dark-border">
+            <div class="text-brand-400 text-lg mb-1">🧪 Interactive Evals</div>
+            <p class="text-xs text-dark-muted">Run real-time benchmark evaluations against local Ollama models or cloud LLMs prior to deployment.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Installation & Quick Start -->
+      <section id="installation" class="space-y-4">
+        <h2 class="text-2xl font-bold text-white tracking-tight border-b border-dark-border pb-3">
+          2. Installation & Quick Start
+        </h2>
+        <p class="text-dark-muted">
+          Delulu runs seamlessly as a standalone desktop application via Electron or as a fast web IDE via Vite and Node.js.
+        </p>
+
+        <div class="code-block p-4 font-mono text-xs text-dark-text overflow-x-auto space-y-2">
+          <div class="text-dark-dim"># 1. Clone the repository</div>
+          <div class="text-brand-400">git clone https://github.com/neerajgrg/delulu.git</div>
+          <div class="text-brand-400">cd delulu</div>
+          <div class="text-dark-dim pt-2"># 2. Install dependencies</div>
+          <div class="text-brand-400">npm install</div>
+          <div class="text-dark-dim pt-2"># 3. Start Web IDE mode (Vite with Hot Module Replacement)</div>
+          <div class="text-green-400">npm run dev:vite</div>
+          <div class="text-dark-dim pt-2"># 4. Or start full Electron desktop app</div>
+          <div class="text-green-400">npm run dev</div>
+        </div>
+      </section>
+
+      <!-- Universal Skill Standard -->
+      <section id="skill-standard" class="space-y-4">
+        <h2 class="text-2xl font-bold text-white tracking-tight border-b border-dark-border pb-3">
+          3. Universal Skill Specification (<code class="text-brand-400">.skill.md</code>)
+        </h2>
+        <p class="text-dark-muted">
+          All skills in Delulu are standard Markdown documents with YAML frontmatter. This format is natively compatible with Claude Code, Cursor, Gemini, and MCP server standards:
+        </p>
+
+        <div class="code-block p-4 font-mono text-xs overflow-x-auto text-dark-text">
+<pre><span class="text-dark-dim">---</span>
+<span class="text-brand-400">name</span>: <span class="text-green-400">code-review</span>
+<span class="text-brand-400">description</span>: <span class="text-yellow-300">"Inspect code for quality, edge cases, and style improvements."</span>
+<span class="text-brand-400">trigger</span>: <span class="text-yellow-300">"review"</span>
+<span class="text-brand-400">tags</span>: <span class="text-purple-300">[code, review, quality]</span>
+<span class="text-brand-400">model</span>: <span class="text-yellow-300">claude-3-5-sonnet-20241022</span>
+<span class="text-brand-400">temperature</span>: <span class="text-blue-400">0.7</span>
+<span class="text-brand-400">max_tokens</span>: <span class="text-blue-400">2048</span>
+<span class="text-dark-dim">---</span>
+
+<span class="text-purple-400 font-bold"># Code Review</span>
+
+<span class="text-brand-400 font-bold">## Description</span>
+Comprehensive code quality and security inspection agent skill.
+
+<span class="text-brand-400 font-bold">## Examples</span>
+
+<span class="text-brand-400 font-bold">### Example 1</span>
+<span class="text-white font-semibold">**Input:**</span>
+```typescript
+function add(a, b) { return a + b; }
+```
+
+<span class="text-white font-semibold">**Output:**</span>
+- ⚠️ Missing TypeScript type annotations for parameters `a` and `b`.
+- ⚠️ Return type not declared — inferred as `any`.
+- ✅ Logic is correct for numeric addition.
+
+<span class="text-brand-400 font-bold">## Constraints</span>
+- Always provide actionable code diffs.
+- Never output raw API keys or credentials.
+</pre>
+        </div>
+      </section>
+
+      <!-- Token Budgeting Engine -->
+      <section id="token-budgeting" class="space-y-4">
+        <h2 class="text-2xl font-bold text-white tracking-tight border-b border-dark-border pb-3">
+          4. Token Counting & Context Budgeting Engine
+        </h2>
+        <p class="text-dark-muted">
+          Delulu includes a native tokenizer analysis engine (<code class="font-mono text-brand-400">src/lib/tokenCounter.ts</code>) that computes:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl bg-dark-surface border border-dark-border">
+            <h3 class="text-sm font-bold text-white mb-2">⚡ Real-time Token Metrics</h3>
+            <ul class="text-xs text-dark-muted space-y-1.5 list-disc list-inside">
+              <li>Exact character and BPE token density (3.2 chars/tok for code, 4.0 chars/tok for prose).</li>
+              <li>Section breakdown (Frontmatter vs Examples vs Constraints).</li>
+            </ul>
+          </div>
+          <div class="p-4 rounded-xl bg-dark-surface border border-dark-border">
+            <h3 class="text-sm font-bold text-white mb-2">📊 Context Window Consumption</h3>
+            <ul class="text-xs text-dark-muted space-y-1.5 list-disc list-inside">
+              <li>Percentage calculation against standard 128k/200k agent context windows.</li>
+              <li>Estimated cost per 1k invocations to manage LLM inference budgets.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Live Skill Playground Widget -->
+      <section id="live-playground" class="space-y-4">
+        <h2 class="text-2xl font-bold text-white tracking-tight border-b border-dark-border pb-3">
+          5. Interactive Live Skill Playground Widget
+        </h2>
+        <p class="text-dark-muted">
+          Try typing or modifying a skill specification below to see real-time token estimation in action:
+        </p>
+
+        <div class="rounded-xl border border-dark-border bg-dark-surface overflow-hidden shadow-2xl">
+          <div class="flex items-center justify-between px-4 py-2.5 bg-dark-surface2 border-b border-dark-border">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+              <span class="text-xs font-mono font-semibold text-white">interactive-preview.skill.md</span>
+            </div>
+            <div id="live-token-badge" class="flex items-center gap-2 text-xs font-mono px-2.5 py-0.5 rounded-md bg-dark-surface3 border border-dark-border text-amber-400">
+              ⚡ <span id="token-count">320</span> tokens (<span id="context-pct">0.25</span>% of 128k)
+            </div>
+          </div>
+          <div class="p-4">
+            <textarea 
+              id="playground-input"
+              rows="12"
+              class="w-full bg-dark-bg text-dark-text font-mono text-xs p-3 rounded-lg border border-dark-border focus:border-brand-500 focus:outline-none resize-y"
+            >---
+name: data-cleaner
+description: "Clean CSV and JSON records, sanitize nulls, and enforce schema rules."
+trigger: "clean"
+tags: [data, cleaning, formatting]
+model: claude-3-5-sonnet-20241022
+temperature: 0.2
+max_tokens: 2048
+---
+
+# Data Cleaner
+
+## Description
+Autonomous data sanitation and validation skill for JSON/CSV streams.
+
+## Examples
+
+### Example 1
+**Input:**
+`{"user_name": "  alice ", "age": null, "email": "ALICE@EXAMPLE.COM"}`
+
+**Output:**
+`{"username": "alice", "age": 0, "email": "alice@example.com", "valid": true}`
+
+## Constraints
+- Always output valid JSON.
+- Never alter primary key fields.</textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contributing Guide -->
+      <section id="contributing" class="space-y-4">
+        <h2 class="text-2xl font-bold text-white tracking-tight border-b border-dark-border pb-3">
+          6. Contributing to Delulu
+        </h2>
+        <p class="text-dark-muted">
+          We follow standard GitHub Flow. All contributions, feature requests, and bug reports are welcome:
+        </p>
+
+        <div class="space-y-3 text-sm text-dark-muted">
+          <div class="flex items-start gap-3 p-3 rounded-lg bg-dark-surface border border-dark-border">
+            <span class="text-brand-400 font-mono font-bold">01</span>
+            <div>
+              <strong class="text-white">Fork & Clone</strong>: Fork the repository and create your feature branch: <code class="text-brand-400 font-mono text-xs">git checkout -b feat/custom-runtime</code>.
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3 rounded-lg bg-dark-surface border border-dark-border">
+            <span class="text-brand-400 font-mono font-bold">02</span>
+            <div>
+              <strong class="text-white">Typecheck & Verify</strong>: Run <code class="text-brand-400 font-mono text-xs">npm run typecheck</code> and <code class="text-brand-400 font-mono text-xs">npm run build:vite</code> to ensure clean compilation with 0 errors.
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3 rounded-lg bg-dark-surface border border-dark-border">
+            <span class="text-brand-400 font-mono font-bold">03</span>
+            <div>
+              <strong class="text-white">Submit Pull Request</strong>: Push your branch and open a PR with a description of the changes.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-border bg-dark-surface py-8 mt-16 text-center text-xs text-dark-dim">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-dark-muted">Delulu AI Skill Studio</span>
+        <span>•</span>
+        <span>Released under the MIT License</span>
+      </div>
+      <div class="flex items-center gap-4 text-dark-muted">
+        <a href="https://github.com/neerajgrg/delulu" class="hover:text-white transition-colors">GitHub</a>
+        <a href="https://github.com/neerajgrg/delulu/blob/main/CONTRIBUTING.md" class="hover:text-white transition-colors">Contributing</a>
+        <a href="https://github.com/neerajgrg/delulu/blob/main/LICENSE" class="hover:text-white transition-colors">License</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Real-time Token Simulator Script for Docs Playground -->
+  <script>
+    const textarea = document.getElementById('playground-input');
+    const tokenCountEl = document.getElementById('token-count');
+    const contextPctEl = document.getElementById('context-pct');
+
+    function calculateTokens(text) {
+      if (!text || !text.trim()) return 0;
+      const trimmed = text.trim();
+      const codeBlocks = trimmed.match(/```[\s\S]*?```/g) || [];
+      let codeChars = 0;
+      for (const block of codeBlocks) codeChars += block.length;
+      const proseChars = trimmed.length - codeChars;
+      const proseTokens = Math.ceil(proseChars / 4.0);
+      const codeTokens = Math.ceil(codeChars / 3.2);
+      const structural = Math.ceil(trimmed.split('\n').length * 0.2);
+      return Math.max(1, proseTokens + codeTokens + structural);
+    }
+
+    function updateTokens() {
+      const val = textarea.value;
+      const tokens = calculateTokens(val);
+      tokenCountEl.innerText = tokens.toLocaleString();
+      contextPctEl.innerText = ((tokens / 128000) * 100).toFixed(2);
+    }
+
+    textarea.addEventListener('input', updateTokens);
+    updateTokens();
+  </script>
+</body>
+</html>

@@ -29,7 +29,7 @@ export default function WelcomeView() {
   const [isDragOver, setIsDragOver] = useState(false);
   const [showOnStartup, setShowOnStartup] = useState(true);
 
-  const folderPath = workspaceFolder || '~/adobe/skills';
+  const folderPath = workspaceFolder || '~/workspace/skills';
 
   const handleOpenFolder = async () => {
     const folder = await window.deluluAPI.openFolder();

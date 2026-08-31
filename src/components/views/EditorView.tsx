@@ -13,6 +13,7 @@ import {
   FolderIcon,
   CheckIcon,
 } from '../shared/Icons';
+import { analyzeSkillTokens } from '../../lib/tokenCounter';
 
 type ViewMode = 'visual' | 'mindmap' | 'code';
 
@@ -151,6 +152,20 @@ export default function EditorView() {
                 💻 Code
               </button>
             </div>
+
+            {/* Live Token Budget Indicator */}
+            {currentTab && (
+              <div
+                className="flex items-center gap-1 px-2 py-1 rounded-md bg-surface-2 border border-line text-xs text-ink-muted font-mono"
+                title={`Skill Token Count: ~${analyzeSkillTokens(currentTab.content).totalTokens.toLocaleString()} tokens\nBudget: ${analyzeSkillTokens(currentTab.content).contextPercentage}% of 128k context\nEstimated Cost/1k calls: $${analyzeSkillTokens(currentTab.content).estimatedCostPer1kCalls}`}
+              >
+                <span className="text-amber-400">⚡</span>
+                <span className="font-semibold text-ink">
+                  {analyzeSkillTokens(currentTab.content).totalTokens.toLocaleString()}
+                </span>
+                <span className="text-[10px] text-ink-dim">tok</span>
+              </div>
+            )}
 
             <div className="h-4 w-px bg-line" />
 

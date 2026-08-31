@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { marked } from 'marked';
+import { analyzeSkillTokens } from '../../lib/tokenCounter';
 
 interface MarkdownPreviewProps {
   content: string;
@@ -30,6 +31,7 @@ function parseFrontmatter(raw: string): { fields: FrontmatterField[]; body: stri
 
 const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({ content }) => {
   const { fields, body } = useMemo(() => parseFrontmatter(content), [content]);
+  const tokenStats = useMemo(() => analyzeSkillTokens(content), [content]);
 
   const htmlBody = useMemo(() => {
     try {
@@ -48,7 +50,12 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({ content }) => {
             <span className="text-3xs uppercase tracking-wider font-semibold text-ink-dim">
               Skill Metadata
             </span>
-            <span className="text-3xs text-accent-bright font-medium">YAML</span>
+            <div className="flex items-center gap-2">
+              <span className="text-3xs font-mono text-amber-400">
+                ⚡ ~{tokenStats.totalTokens.toLocaleString()} tokens
+              </span>
+              <span className="text-3xs text-accent-bright font-medium">YAML</span>
+            </div>
           </div>
           <div className="p-3 grid grid-cols-2 gap-x-4 gap-y-1.5">
             {fields.map(({ key, value }) => (

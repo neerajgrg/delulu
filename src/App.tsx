@@ -13,6 +13,7 @@ import GalleryView from './components/views/GalleryView';
 import EvalsView from './components/views/EvalsView';
 import AgentsView from './components/views/AgentsView';
 import SettingsView from './components/views/SettingsView';
+import DocsView from './components/views/DocsView';
 
 export default function App() {
   const {
@@ -112,6 +113,7 @@ export default function App() {
             {view === 'evals'    && <EvalsView />}
             {view === 'agents'   && <AgentsView />}
             {view === 'settings' && <SettingsView />}
+            {view === 'docs'     && <DocsView />}
           </main>
 
           {/* Bottom Console Drawer */}

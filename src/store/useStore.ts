@@ -8,8 +8,8 @@ import type {
   ExecutionLog,
 } from '../types/delulu';
 
-export type ActivePanel = 'home' | 'explorer' | 'gallery' | 'evals' | 'agents' | 'settings';
-export type MainView   = 'welcome' | 'editor' | 'builder' | 'gallery' | 'evals' | 'agents' | 'settings';
+export type ActivePanel = 'home' | 'explorer' | 'gallery' | 'evals' | 'agents' | 'settings' | 'docs';
+export type MainView   = 'welcome' | 'editor' | 'builder' | 'gallery' | 'evals' | 'agents' | 'settings' | 'docs';
 export type BottomTab  = 'problems' | 'logs' | 'repl' | 'terminal';
 
 export interface OpenTab {

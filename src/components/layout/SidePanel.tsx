@@ -4,8 +4,8 @@ import SkillsExplorer from '../panels/SkillsExplorer';
 export default function SidePanel() {
   const { panel, isSidebarOpen, view } = useStore();
 
-  // Only show the sidebar when explicitly on the explorer panel, or in editor when sidebar is open
-  const show = isSidebarOpen && (panel === 'explorer' || view === 'editor');
+  // Only show the sidebar when explicitly on the explorer panel and sidebar is open
+  const show = isSidebarOpen && panel === 'explorer';
   if (!show) return null;
 
   return (

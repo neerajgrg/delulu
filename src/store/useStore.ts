@@ -213,10 +213,13 @@ export const useStore = create<DeluluStore>((set, get) => ({
   activeTab: null,
 
   openSkill: async (skill) => {
-    const { tabs } = get();
-    if (!tabs.find((t) => t.path === skill.path)) {
+    if (!get().tabs.find((t) => t.path === skill.path)) {
       const content = await window.deluluAPI.readFile(skill.path);
-      set({ tabs: [...tabs, { path: skill.path, name: skill.name, content, isDirty: false }] });
+      set((s) => ({
+        tabs: s.tabs.find((t) => t.path === skill.path)
+          ? s.tabs
+          : [...s.tabs, { path: skill.path, name: skill.name, content, isDirty: false }],
+      }));
     }
     set({ activeTab: skill.path, view: 'editor', panel: 'explorer' });
     await window.deluluAPI.addRecent(skill.path, skill.name);
@@ -225,11 +228,14 @@ export const useStore = create<DeluluStore>((set, get) => ({
   },
 
   openFile: async (filePath, name) => {
-    const { tabs } = get();
     const fileName = name || filePath.split('/').pop() || 'Untitled';
-    if (!tabs.find((t) => t.path === filePath)) {
+    if (!get().tabs.find((t) => t.path === filePath)) {
       const content = await window.deluluAPI.readFile(filePath);
-      set({ tabs: [...tabs, { path: filePath, name: fileName, content, isDirty: false }] });
+      set((s) => ({
+        tabs: s.tabs.find((t) => t.path === filePath)
+          ? s.tabs
+          : [...s.tabs, { path: filePath, name: fileName, content, isDirty: false }],
+      }));
     }
     set({ activeTab: filePath, view: 'editor', panel: 'explorer' });
     await window.deluluAPI.addRecent(filePath, fileName);
@@ -301,6 +307,7 @@ export const useStore = create<DeluluStore>((set, get) => ({
         openaiApiKey,
         defaultModel,
         fontSize,
+        fontLigatures,
       ] = await Promise.all([
         window.deluluAPI.getWorkspace(),
         window.deluluAPI.getSetting('theme'),
@@ -311,6 +318,7 @@ export const useStore = create<DeluluStore>((set, get) => ({
         window.deluluAPI.getSetting('openaiApiKey'),
         window.deluluAPI.getSetting('defaultModel'),
         window.deluluAPI.getSetting('fontSize'),
+        window.deluluAPI.getSetting('fontLigatures'),
       ]);
 
       const resolvedTheme = (theme as 'dark' | 'light') ?? 'dark';
@@ -331,6 +339,7 @@ export const useStore = create<DeluluStore>((set, get) => ({
           openaiApiKey: (openaiApiKey as string) ?? '',
           defaultModel: (defaultModel as string) ?? DEFAULT_SETTINGS.defaultModel,
           fontSize: (fontSize as number) ?? DEFAULT_SETTINGS.fontSize,
+          fontLigatures: fontLigatures !== undefined ? (fontLigatures as boolean) : DEFAULT_SETTINGS.fontLigatures,
         },
       });
 

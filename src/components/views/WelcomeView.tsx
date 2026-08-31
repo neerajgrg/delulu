@@ -19,6 +19,7 @@ export default function WelcomeView() {
     skills,
     openSkill,
     setView,
+    setPanel,
     setWorkspaceFolder,
     workspaceFolder,
   } = useStore();
@@ -174,7 +175,7 @@ export default function WelcomeView() {
                     ))}
 
                     <button
-                      onClick={() => useStore.getState().setPanel('explorer')}
+                      onClick={() => setPanel('explorer')}
                       className="text-xs text-[#3794ff] hover:underline text-left mt-1 cursor-pointer"
                     >
                       More…

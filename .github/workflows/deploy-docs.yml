@@ -1,11 +1,8 @@
-name: Deploy GitHub Pages Docs
+name: Deploy Delulu IDE & Docs to GitHub Pages
 
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'docs/**'
-      - '.github/workflows/deploy-docs.yml'
   workflow_dispatch:
 
 permissions:
@@ -18,22 +15,41 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build Live IDE Web App
+        run: npm run build:vite
+
+      - name: Copy Documentation Portal into Build Dist
+        run: cp -r docs dist/docs
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
+      - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'docs/'
+          path: 'dist/'
 
       - name: Deploy to GitHub Pages
         id: deployment

@@ -9,6 +9,7 @@ import {
   CheckIcon,
   FlaskConicalIcon,
 } from '../shared/Icons';
+import { analyzeSkillTokens } from '../../lib/tokenCounter';
 
 interface VisualSkillEditorProps {
   skill: SkillFile;
@@ -261,6 +262,12 @@ export const VisualSkillEditor: React.FC<VisualSkillEditorProps> = ({
               </span>
               <QualityStars quality={skill.quality} size="md" />
               <span className="text-xs text-ink-muted">Quality: {skill.quality}/5</span>
+              <span
+                className="text-xs font-mono text-ink-muted bg-surface-2 px-2 py-0.5 rounded-md border border-line cursor-help"
+                title={`Tokens: ~${analyzeSkillTokens(content).totalTokens.toLocaleString()} (${analyzeSkillTokens(content).contextPercentage}% of 128k context)`}
+              >
+                ⚡ <strong className="text-ink">{analyzeSkillTokens(content).totalTokens.toLocaleString()}</strong> tokens
+              </span>
             </div>
 
             <input

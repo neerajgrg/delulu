@@ -2,6 +2,7 @@ import { useStore } from '../../store/useStore';
 import QualityStars from '../shared/QualityStars';
 import { FolderIcon, FlaskConicalIcon } from '../shared/Icons';
 import DeluluLogo from '../shared/DeluluLogo';
+import { analyzeSkillTokens } from '../../lib/tokenCounter';
 
 export default function StatusBar() {
   const {
@@ -99,9 +100,17 @@ export default function StatusBar() {
         </span>
 
         {tab && (
-          <span className="border-l border-line pl-3 text-accent-bright font-medium">
-            skill.md
-          </span>
+          <>
+            <span
+              className="border-l border-line pl-3 text-ink hover:text-accent-bright transition-colors cursor-help"
+              title={`Estimated Token Count: ~${analyzeSkillTokens(tab.content).totalTokens.toLocaleString()} tokens\nWords: ${analyzeSkillTokens(tab.content).words}\nCharacters: ${analyzeSkillTokens(tab.content).characters}\nContext Window Budget: ${analyzeSkillTokens(tab.content).contextPercentage}% of 128k`}
+            >
+              ⚡ ~{analyzeSkillTokens(tab.content).totalTokens.toLocaleString()} tokens
+            </span>
+            <span className="border-l border-line pl-3 text-accent-bright font-medium">
+              skill.md
+            </span>
+          </>
         )}
       </div>
     </footer>

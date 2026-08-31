@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Antigravity Professional UI Theme Tokens ───────────────────────────────── */
+:root {
+  /* Obsidian Dark Palette (Antigravity IDE) */
+  --bg-base: 15 15 18;          /* #0f0f12 - Deep warm obsidian */
+  --bg-surface: 22 22 27;       /* #16161b - Sidebar & panels */
+  --bg-surface-2: 28 28 35;     /* #1c1c23 - Hover & secondary cards */
+  --bg-surface-3: 36 36 45;     /* #24242d - Active states & pills */
+  --bg-surface-4: 48 48 60;     /* #30303c - Raised micro elements */
+  --bg-surface-5: 62 62 76;
+
+  /* Antigravity Precision Blue & Violet Accents */
+  --accent: 37 99 235;          /* #2563eb - Primary Blue */
+  --accent-bright: 59 130 246;  /* #3b82f6 - Interactive Blue */
+  --accent-dim: 29 78 216;      /* #1d4ed8 - Pressed Blue */
+
+  /* Crisp Apple / Linear Typography Hierarchy */
+  --text-ink: 242 242 247;      /* #f2f2f7 - High contrast primary */
+  --text-ink-2: 209 209 214;    /* #d1d1d6 - Secondary reading text */
+  --text-ink-muted: 142 142 147;/* #8e8e93 - Captions & labels */
+  --text-ink-dim: 100 100 108;  /* #64646c - Subtle placeholders & icons */
+
+  /* Hairline Precision Borders */
+  --border-line: 38 38 46;      /* #26262e - Ultra subtle boundary */
+  --border-line-bright: 54 54 66;/* #363642 - Hover & active boundary */
+
+  --card-bg: 22 22 27;
+  --scrollbar-thumb: #2b2b35;
+  --scrollbar-thumb-hover: #3d3d4b;
+}
+
+html.light, [data-theme="light"] {
+  /* Clean Studio Light Palette */
+  --bg-base: 248 249 251;       /* #f8f9fb */
+  --bg-surface: 255 255 255;
+  --bg-surface-2: 241 243 247;
+  --bg-surface-3: 230 234 240;
+  --bg-surface-4: 216 222 230;
+  --bg-surface-5: 160 170 185;
+
+  --accent: 37 99 235;
+  --accent-bright: 59 130 246;
+  --accent-dim: 29 78 216;
+
+  --text-ink: 17 24 39;         /* #111827 - Slate 900 */
+  --text-ink-2: 55 65 81;       /* #374151 - Slate 700 */
+  --text-ink-muted: 107 114 128;/* #6b7280 - Slate 500 */
+  --text-ink-dim: 156 163 175;  /* #9ca3af - Slate 400 */
+
+  --border-line: 229 231 235;   /* #e5e7eb */
+  --border-line-bright: 209 213 219;
+
+  --card-bg: 255 255 255;
+  --scrollbar-thumb: #d1d5db;
+  --scrollbar-thumb-hover: #9ca3af;
+}
+
+/* ── Reset & Baseline ────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  background: rgb(var(--bg-base));
+  color: rgb(var(--text-ink));
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", "Geist", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.012em;
+}
+
+/* Allow text selection in inputs, previews and editor */
+input, textarea, [contenteditable], .selectable {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* ── Refined Hairline Micro Scrollbars ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+
+/* ── Electron drag regions ──────────────────────────────────────────────────── */
+.drag   { -webkit-app-region: drag; }
+.no-drag { -webkit-app-region: no-drag; }
+
+/* ── Antigravity Precision UI Utility Classes ───────────────────────────────── */
+@layer utilities {
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-1.5 bg-accent text-white hover:bg-accent-bright active:bg-accent-dim
+           px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-150 cursor-pointer shadow-sm
+           focus:outline-none focus:ring-1 focus:ring-accent-bright disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 text-ink-muted hover:text-ink hover:bg-surface-3 active:bg-surface-4
+           px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors duration-150 cursor-pointer disabled:opacity-40;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-1.5 border border-line bg-surface hover:bg-surface-2 hover:border-line-bright
+           text-ink-2 hover:text-ink px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-150 cursor-pointer shadow-sm;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-1.5 bg-err/10 text-err hover:bg-err/20 border border-err/30
+           px-3 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer;
+  }
+
+  /* Inputs */
+  .input {
+    @apply bg-base border border-line text-ink placeholder-ink-dim
+           rounded-md px-2.5 py-1.5 text-xs w-full outline-none
+           focus:border-accent focus:ring-1 focus:ring-accent
+           transition-all duration-150 font-sans;
+    user-select: text;
+    -webkit-user-select: text;
+  }
+
+  /* Tags & Micro Badges */
+  .tag {
+    @apply inline-flex items-center gap-1 bg-surface-3 text-ink-muted text-2xs px-2 py-0.5 rounded font-mono border border-line;
+  }
+
+  /* Source Badges */
+  .badge-cursor    { @apply inline-flex items-center text-3xs font-mono font-medium px-1.5 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/30; }
+  .badge-agents    { @apply inline-flex items-center text-3xs font-mono font-medium px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-400 border border-purple-500/30; }
+  .badge-workspace { @apply inline-flex items-center text-3xs font-mono font-medium px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30; }
+  .badge-custom    { @apply inline-flex items-center text-3xs font-mono font-medium px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-400 border border-amber-500/30; }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-white via-white/90 to-white/60 bg-clip-text text-transparent;
+  }
+
+  /* Modern Glass Panel */
+  .glass-panel {
+    background: rgb(var(--bg-surface));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgb(var(--border-line));
+  }
+
+  /* Card Linear */
+  .card-linear {
+    background: rgb(var(--card-bg));
+    border: 1px solid rgb(var(--border-line));
+    border-radius: 8px;
+    transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card-linear:hover {
+    border-color: rgb(var(--border-line-bright));
+    background: rgb(var(--bg-surface-2));
+  }
+}

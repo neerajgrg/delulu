@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="./public/delulu-logo.svg" alt="Delulu Logo" width="96" height="96" />
+<img src="./public/delulu-logo.svg" alt="Delulu Logo" width="100" height="100" />
 
 **The Universal Open-Source IDE & Benchmark Studio for AI Agent Skills**
 
@@ -64,6 +64,18 @@ It bridges the gap between raw prompt engineering and structured software develo
 
 ---
 
+## 🤖 Supported Agent Ecosystems
+
+| Agent Runtime | Integration Target | Skill Sync Mode | Supported Models |
+| :--- | :--- | :--- | :--- |
+| **Anthropic Claude Code** | `~/.claude/skills/` | Automatic Symlink | Claude 3.5 Sonnet, Claude 3.5 Haiku, Claude 3 Opus |
+| **Cursor AI Agent** | `.cursor/skills/` | Project / Workspace Link | Cursor Claude 3.5, Cursor GPT-4o |
+| **Google Gemini / Antigravity** | `~/.gemini/skills/` | Environment & Vault Link | Gemini 2.0 Flash, Gemini 2.0 Pro, Gemini 1.5 Pro |
+| **Local Ollama / Llama** | `~/.ollama/` | Local Native Disk | Gemma 3 (1B/4B/12B/27B), Llama 3.3, Mistral |
+| **MCP Servers** | `~/.delulu/mcp/` | Model Context Protocol | Custom MCP Tools & Sidecars |
+
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -84,7 +96,7 @@ npm install
 ### 2. Run in Development Mode
 
 ```bash
-# Run Web IDE (Fast Vite Dev Server)
+# Run Web IDE (Fast Vite Dev Server with HMR)
 npm run dev:vite
 
 # Or Run Desktop App (Electron + Vite)
@@ -156,42 +168,16 @@ function add(a, b) { return a + b; }
 
 ---
 
-## 🏗️ Architecture
-
-```
-delulu/
-├── electron/                 # Electron main & preload IPC processes
-│   ├── main.ts
-│   └── preload.ts
-├── src/
-│   ├── components/
-│   │   ├── editor/           # Monaco, Markdown Preview, Markmap, Visual Editor
-│   │   ├── layout/           # TitleBar, AppMenuBar, ActivityBar, SidePanel, StatusBar, BottomConsole
-│   │   ├── panels/           # SkillsExplorer, InspectorPanel
-│   │   ├── shared/           # Icons, DeluluLogo, QualityStars, Modals
-│   │   └── views/            # WelcomeView, EditorView, SkillBuilder, GalleryView, EvalsView, SettingsView
-│   ├── lib/                  # Token counting, Markdown parsing, Quality scoring, Linting, Mock API
-│   ├── store/                # Zustand global state (useStore.ts)
-│   ├── types/                # TypeScript definitions (delulu.d.ts)
-│   ├── App.tsx               # Root component & keyboard shortcuts
-│   └── main.tsx              # React DOM entrypoint
-├── Dockerfile                # Production multi-stage Docker build
-├── server.js                 # Standalone static web server
-└── vite.config.ts            # Vite bundler & Monaco worker configuration
-```
-
----
-
 ## 🧪 Testing & Verification
 
 ```bash
 # Run TypeScript Typecheck
 npm run typecheck
 
-# Run Production Vite Build
+# Run Production Vite Web Build
 npm run build:vite
 
-# Full Electron Production Build
+# Full Desktop Electron Build
 npm run build
 ```
 

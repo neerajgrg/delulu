@@ -7,6 +7,7 @@ import {
   FlaskConicalIcon,
   SettingsIcon,
   BotIcon,
+  BookOpenIcon,
 } from '../shared/Icons';
 
 interface NavItem {
@@ -24,7 +25,8 @@ export default function ActivityBar() {
     { id: 'explorer', icon: <FileCodeIcon size={20} />,       label: 'Explorer (⌘B)',                  },
     { id: 'home',     icon: <SearchIcon size={19} />,         label: 'Search (⌘F)'                     },
     { id: 'evals',    icon: <FlaskConicalIcon size={19} />,   label: 'Evals & Playground (⌘3)', view: 'evals' },
-    { id: 'gallery',  icon: <LibraryIcon size={19} />,        label: 'Plugins & Templates (⌘2)', badge: '2', view: 'gallery' },
+    { id: 'gallery',  icon: <LibraryIcon size={19} />,        label: 'Plugins & Templates (⌘4)', badge: '2', view: 'gallery' },
+    { id: 'docs',     icon: <BookOpenIcon size={19} />,       label: 'Developer Documentation (⌘D)', view: 'docs' },
   ];
 
   const handleItemClick = (item: NavItem) => {

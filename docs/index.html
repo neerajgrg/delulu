@@ -11,7 +11,7 @@
   <meta property="og:description" content="Author, benchmark, and deploy skills across AI agents (Claude, Gemini, Cursor, Ollama).">
   <meta property="og:type" content="website">
   
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><defs><linearGradient id='g' x1='4' y1='4' x2='32' y2='32'><stop offset='0%25' stop-color='%2338bdf8'/><stop offset='50%25' stop-color='%236366f1'/><stop offset='100%25' stop-color='%23a855f7'/></linearGradient></defs><path d='M6 6 C6 4.3 7.3 3 9 3 L14 3 C15.7 3 17 4.3 17 6 L17 30 C17 31.7 15.7 33 14 33 L9 33 C7.3 33 6 31.7 6 30 Z' fill='%232563eb'/><path d='M15 3 L23 3 C28.5 3 33 7.5 33 13 C33 18.5 28.5 23 23 23 L15 23 Z' fill='none' stroke='url(%23g)' stroke-width='6' stroke-linejoin='round'/></svg>">
+  <link rel="icon" type="image/svg+xml" href="./delulu-logo.svg">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,6 +54,11 @@
   
   <style>
     html { scroll-behavior: smooth; }
+    body { margin: 0; background-color: #0e0e12; color: #e2e2ec; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    svg { display: inline-block; vertical-align: middle; }
+    .w-7 { width: 1.75rem !important; height: 1.75rem !important; }
+    .w-4 { width: 1rem !important; height: 1rem !important; }
+    .w-3 { width: 0.75rem !important; height: 0.75rem !important; }
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: #0e0e12; }
     ::-webkit-scrollbar-thumb { background: #262632; border-radius: 4px; }
@@ -68,7 +73,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
       <div class="flex items-center gap-4">
         <a href="#hero" class="flex items-center gap-2.5 group">
-          <svg class="w-7 h-7 transform group-hover:scale-105 transition-transform" viewBox="0 0 36 36">
+          <svg width="28" height="28" class="w-7 h-7 transform group-hover:scale-105 transition-transform" viewBox="0 0 36 36">
             <defs>
               <linearGradient id="logo-g" x1="4" y1="4" x2="32" y2="32">
                 <stop offset="0%" stop-color="#38bdf8"/>
@@ -86,7 +91,8 @@
       </div>
 
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-dark-muted">
-        <a href="#getting-started" class="hover:text-white transition-colors">Getting Started</a>
+        <a href="#demo-video" class="text-brand-400 hover:text-white transition-colors flex items-center gap-1"><span>🎬</span> Video Demo</a>
+        <a href="#when-to-use" class="hover:text-white transition-colors">When & How to Use</a>
         <a href="#skill-standard" class="hover:text-white transition-colors">Skill Standard</a>
         <a href="#token-budgeting" class="hover:text-white transition-colors">Token Engine</a>
         <a href="#live-playground" class="hover:text-white transition-colors">Live Preview</a>
@@ -98,7 +104,7 @@
           <span>🚀 Launch Live IDE</span>
         </a>
         <a href="https://github.com/neerajgrg/delulu" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-dark-surface hover:bg-dark-surface2 border border-dark-border text-sm font-medium text-white transition-all shadow-sm">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <svg width="16" height="16" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           <span>GitHub</span>
         </a>
       </div>
@@ -122,6 +128,14 @@
           </div>
           <span class="text-xs text-brand-400">⚡</span>
         </a>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-wider text-dark-dim font-bold mb-3">Interactive Showcase</h4>
+          <ul class="space-y-2 text-dark-muted">
+            <li><a href="#demo-video" class="hover:text-brand-400 block transition-colors flex items-center gap-1 text-brand-300 font-semibold"><span>🎬</span> Video Demo Player</a></li>
+            <li><a href="#when-to-use" class="hover:text-brand-400 block transition-colors">When & How to Use</a></li>
+          </ul>
+        </div>
 
         <div>
           <h4 class="text-xs uppercase tracking-wider text-dark-dim font-bold mb-3">Getting Started</h4>
@@ -177,12 +191,205 @@
             Delulu is a specialized developer studio for authoring, evaluating, and deploying reusable skill packages across Claude, Gemini, Cursor, and Ollama agent runtimes.
           </p>
           <div class="flex flex-wrap gap-3 pt-4">
-            <a href="#installation" class="px-5 py-2.5 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm transition-all shadow-lg shadow-brand-500/25">
+            <a href="#demo-video" class="px-5 py-2.5 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm transition-all shadow-lg shadow-brand-500/25 flex items-center gap-2">
+              <span>🎬 Watch Demo Video</span>
+            </a>
+            <a href="#when-to-use" class="px-5 py-2.5 rounded-lg bg-dark-surface3 hover:bg-dark-border text-white font-semibold text-sm border border-dark-border transition-all">
+              When & How to Use
+            </a>
+            <a href="#installation" class="px-5 py-2.5 rounded-lg bg-dark-surface hover:bg-dark-surface2 text-brand-400 font-semibold text-sm border border-brand-500/30 transition-all">
               Get Started in 60s
             </a>
-            <a href="#skill-standard" class="px-5 py-2.5 rounded-lg bg-dark-surface3 hover:bg-dark-border text-white font-semibold text-sm border border-dark-border transition-all">
-              Explore Skill Standard
-            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Video Demo Showcase -->
+      <section id="demo-video" class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-dark-border pb-4">
+          <div>
+            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-brand-500/15 text-brand-400 font-mono text-2xs font-semibold uppercase tracking-wider mb-1">
+              <span>Interactive Studio Walkthrough</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              🎬 Delulu IDE in Action
+            </h2>
+          </div>
+          <a href="../" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-brand-500 hover:bg-brand-600 text-white text-xs font-semibold shadow-md shadow-brand-500/20 self-start sm:self-auto">
+            <span>Launch Live IDE Demo →</span>
+          </a>
+        </div>
+
+        <p class="text-dark-muted text-sm leading-relaxed">
+          Watch how Delulu streamlines prompt engineering from visual authoring to real-time token budgeting, multi-model evals, and 1-click MCP exports. Click any chapter or press Play below to simulate real-time workflow.
+        </p>
+
+        <!-- Simulated Video Window Player -->
+        <div class="rounded-2xl border border-dark-border bg-dark-surface overflow-hidden shadow-2xl relative group">
+          <!-- Player Top Header -->
+          <div class="px-4 py-3 bg-dark-bg border-b border-dark-border flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+              <span class="ml-2 text-xs font-mono text-dark-muted" id="video-filename">delulu-studio / code-review.skill.md</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-3xs font-mono px-2 py-0.5 rounded bg-brand-500/20 text-brand-400 font-semibold" id="video-badge">
+                Chapter 1: Visual Authoring
+              </span>
+            </div>
+          </div>
+
+          <!-- Video Chapter Navigation Tabs -->
+          <div class="grid grid-cols-2 md:grid-cols-4 bg-dark-surface2 border-b border-dark-border text-xs font-medium divide-x divide-dark-border text-dark-muted">
+            <button onclick="switchVideoChapter(0)" id="chapter-btn-0" class="px-3 py-2.5 text-left transition-all hover:text-white bg-dark-surface3 text-brand-400 font-semibold flex items-center justify-between">
+              <span>1. Authoring Skills</span>
+              <span class="text-3xs font-mono opacity-60">0:00</span>
+            </button>
+            <button onclick="switchVideoChapter(1)" id="chapter-btn-1" class="px-3 py-2.5 text-left transition-all hover:text-white flex items-center justify-between">
+              <span>2. Token Budgeting</span>
+              <span class="text-3xs font-mono opacity-60">0:15</span>
+            </button>
+            <button onclick="switchVideoChapter(2)" id="chapter-btn-2" class="px-3 py-2.5 text-left transition-all hover:text-white flex items-center justify-between">
+              <span>3. AI Evals & Bench</span>
+              <span class="text-3xs font-mono opacity-60">0:30</span>
+            </button>
+            <button onclick="switchVideoChapter(3)" id="chapter-btn-3" class="px-3 py-2.5 text-left transition-all hover:text-white flex items-center justify-between">
+              <span>4. Export & Symlinks</span>
+              <span class="text-3xs font-mono opacity-60">0:45</span>
+            </button>
+          </div>
+
+          <!-- Video Simulation Stage Canvas -->
+          <div class="p-6 md:p-8 bg-dark-bg min-h-[380px] flex flex-col justify-between" id="video-screen">
+            <!-- Dynamic Content Injected via JS -->
+            <div id="video-content" class="space-y-4 animate-fade-in">
+              <!-- Content rendered by switchVideoChapter() -->
+            </div>
+          </div>
+
+          <!-- Video Scrubber & Playback Controls Bar -->
+          <div class="px-4 py-3 bg-dark-surface border-t border-dark-border flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+              <button onclick="toggleVideoPlayback()" id="video-play-btn" class="p-2 rounded-lg bg-brand-500 hover:bg-brand-600 text-white transition-all shadow-sm flex items-center gap-1.5 text-xs font-semibold px-3">
+                <span id="video-play-icon">▶</span>
+                <span id="video-play-text">Play Demo</span>
+              </button>
+              <div class="text-xs font-mono text-dark-muted" id="video-timer">0:00 / 1:00</div>
+            </div>
+
+            <!-- Scrubber Track -->
+            <div class="flex-1 w-full mx-0 sm:mx-4">
+              <div class="w-full bg-dark-border h-2 rounded-full overflow-hidden cursor-pointer" onclick="scrubVideo(event)">
+                <div id="video-progress" class="bg-gradient-to-r from-brand-500 to-accent h-full w-0 transition-all duration-300"></div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 text-2xs text-dark-dim font-mono">
+              <span>1080p HD Interactive Simulation</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- When & How to Use Guide -->
+      <section id="when-to-use" class="space-y-8">
+        <div>
+          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-mono text-2xs font-semibold uppercase tracking-wider mb-1">
+            <span>Practical Guide & Decision Matrix</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            🎯 When & How to Use Delulu
+          </h2>
+          <p class="text-dark-muted text-sm mt-2 leading-relaxed">
+            Understand exactly when Delulu fits into your AI engineering stack and how to build, test, and ship skills in under 2 minutes.
+          </p>
+        </div>
+
+        <!-- 4 Key "When to Use" Scenarios -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Scenario 1 -->
+          <div class="p-5 rounded-xl bg-dark-surface border border-dark-border space-y-2.5 hover:border-brand-500/40 transition-colors">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">🎯</span>
+              <h3 class="font-bold text-sm text-white">When You Need Standardized Team Skills</h3>
+            </div>
+            <p class="text-xs text-dark-muted leading-relaxed">
+              When engineers on your team keep copy-pasting system prompts across Cursor, Claude Code, and Gemini with slightly different formatting and inconsistent behavior.
+            </p>
+            <div class="text-2xs font-mono p-2.5 rounded bg-dark-bg text-brand-300 border border-dark-border">
+              💡 <strong>How Delulu Helps:</strong> Centralizes skills in <code class="text-white">~/.delulu/skills</code> with automated symlinks across all local agent tools.
+            </div>
+          </div>
+
+          <!-- Scenario 2 -->
+          <div class="p-5 rounded-xl bg-dark-surface border border-dark-border space-y-2.5 hover:border-brand-500/40 transition-colors">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">⚡</span>
+              <h3 class="font-bold text-sm text-white">When Prompts Are Bloated & Expensive</h3>
+            </div>
+            <p class="text-xs text-dark-muted leading-relaxed">
+              When system prompts take up 30-50% of your model's context window, slowing down inference time and driving up API token billing.
+            </p>
+            <div class="text-2xs font-mono p-2.5 rounded bg-dark-bg text-amber-300 border border-dark-border">
+              💡 <strong>How Delulu Helps:</strong> Real-time BPE token counter shows code density, context window %, and estimated cost per 1k invocations.
+            </div>
+          </div>
+
+          <!-- Scenario 3 -->
+          <div class="p-5 rounded-xl bg-dark-surface border border-dark-border space-y-2.5 hover:border-brand-500/40 transition-colors">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">🧪</span>
+              <h3 class="font-bold text-sm text-white">When You Must Test Before Production</h3>
+            </div>
+            <p class="text-xs text-dark-muted leading-relaxed">
+              When you modify prompt instructions and need empirical proof that the prompt doesn't cause regressions across edge cases.
+            </p>
+            <div class="text-2xs font-mono p-2.5 rounded bg-dark-bg text-emerald-300 border border-dark-border">
+              💡 <strong>How Delulu Helps:</strong> Evals Studio executes prompt against local Ollama models (Gemma 3, Llama 3) or Claude with pass/fail benchmarks.
+            </div>
+          </div>
+
+          <!-- Scenario 4 -->
+          <div class="p-5 rounded-xl bg-dark-surface border border-dark-border space-y-2.5 hover:border-brand-500/40 transition-colors">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">📦</span>
+              <h3 class="font-bold text-sm text-white">When Deploying to MCP or Code Repos</h3>
+            </div>
+            <p class="text-xs text-dark-muted leading-relaxed">
+              When you want to turn prompt instructions into structured Model Context Protocol (MCP) JSON schemas, OpenAI functions, or typed Python/TypeScript code.
+            </p>
+            <div class="text-2xs font-mono p-2.5 rounded bg-dark-bg text-purple-300 border border-dark-border">
+              💡 <strong>How Delulu Helps:</strong> 1-click Export modal generates valid MCP tool JSON, OpenAI tool schema, async Python wrappers, and TS types.
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Step "How to Use" Step-by-Step Flow -->
+        <div class="p-6 rounded-2xl bg-dark-surface2 border border-dark-border space-y-4">
+          <h3 class="text-base font-bold text-white">🚀 How to Use Delulu in 4 Simple Steps</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            <div class="p-4 rounded-xl bg-dark-bg border border-dark-border space-y-1.5">
+              <div class="text-brand-400 font-mono font-bold text-sm">Step 01</div>
+              <div class="font-bold text-white">Scaffold Skill (⌘N)</div>
+              <p class="text-dark-muted text-2xs">Pick from Code Review, API Integration, or Data Analysis template.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-dark-bg border border-dark-border space-y-1.5">
+              <div class="text-brand-400 font-mono font-bold text-sm">Step 02</div>
+              <div class="font-bold text-white">Tune AST & Tokens</div>
+              <p class="text-dark-muted text-2xs">View interactive D3 mindmap and monitor live BPE token counter.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-dark-bg border border-dark-border space-y-1.5">
+              <div class="text-brand-400 font-mono font-bold text-sm">Step 03</div>
+              <div class="font-bold text-white">Run AI Evals (⌘3)</div>
+              <p class="text-dark-muted text-2xs">Test live with local Ollama or Claude LLMs in the Evals Studio.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-dark-bg border border-dark-border space-y-1.5">
+              <div class="text-brand-400 font-mono font-bold text-sm">Step 04</div>
+              <div class="font-bold text-white">Export & Symlink</div>
+              <p class="text-dark-muted text-2xs">Deploy to Claude, Cursor, and Gemini or export as MCP Tool JSON.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -410,8 +617,9 @@ Autonomous data sanitation and validation skill for JSON/CSV streams.
     </div>
   </footer>
 
-  <!-- Real-time Token Simulator Script for Docs Playground -->
+  <!-- Real-time Token Simulator & Interactive Video Demo Scripts -->
   <script>
+    // ── Playground Token Simulator ──
     const textarea = document.getElementById('playground-input');
     const tokenCountEl = document.getElementById('token-count');
     const contextPctEl = document.getElementById('context-pct');
@@ -430,14 +638,333 @@ Autonomous data sanitation and validation skill for JSON/CSV streams.
     }
 
     function updateTokens() {
+      if (!textarea || !tokenCountEl || !contextPctEl) return;
       const val = textarea.value;
       const tokens = calculateTokens(val);
       tokenCountEl.innerText = tokens.toLocaleString();
       contextPctEl.innerText = ((tokens / 128000) * 100).toFixed(2);
     }
 
-    textarea.addEventListener('input', updateTokens);
-    updateTokens();
+    if (textarea) {
+      textarea.addEventListener('input', updateTokens);
+      updateTokens();
+    }
+
+    // ── Interactive Demo Video Player Engine ──
+    const CHAPTERS = [
+      {
+        id: 0,
+        title: 'Chapter 1: Visual Authoring & AST Mindmap',
+        badge: '1. Visual Authoring',
+        filename: 'delulu-studio / code-review.skill.md',
+        startTime: 0,
+        render: () => `
+          <div class="space-y-4 animate-fade-in">
+            <div class="flex items-center justify-between p-3 rounded-xl bg-dark-surface border border-dark-border">
+              <div class="flex items-center gap-2">
+                <span class="text-xs px-2 py-0.5 rounded bg-brand-500/20 text-brand-400 font-mono font-bold">MODE</span>
+                <span class="text-xs font-semibold text-white">Visual Form + Live Mindmap</span>
+              </div>
+              <div class="flex items-center gap-1 text-xs text-yellow-400 font-semibold">
+                <span>★★★★☆</span>
+                <span class="text-dark-muted font-mono text-2xs ml-1">Score: 4/5</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+              <!-- Visual Form Fields Mockup -->
+              <div class="p-4 rounded-xl bg-dark-surface2 border border-dark-border space-y-3">
+                <div class="text-2xs uppercase tracking-wider text-dark-dim font-bold font-sans">Skill Core Definition</div>
+                <div>
+                  <label class="text-3xs text-dark-muted block mb-1">Skill Name</label>
+                  <div class="p-2 rounded bg-dark-bg border border-dark-border text-brand-300 font-semibold">code-review</div>
+                </div>
+                <div>
+                  <label class="text-3xs text-dark-muted block mb-1">Trigger Slash-Command</label>
+                  <div class="p-2 rounded bg-dark-bg border border-dark-border text-white">/review</div>
+                </div>
+                <div>
+                  <label class="text-3xs text-dark-muted block mb-1">Few-Shot Examples (Input / Output)</label>
+                  <div class="p-2 rounded bg-dark-bg border border-dark-border text-dark-text text-3xs">
+                    Input: function add(a, b) { ... }<br/>
+                    Output: ⚠️ Missing type annotations
+                  </div>
+                </div>
+              </div>
+
+              <!-- AST Mindmap Node Tree -->
+              <div class="p-4 rounded-xl bg-dark-surface2 border border-dark-border space-y-3 flex flex-col justify-between">
+                <div class="text-2xs uppercase tracking-wider text-dark-dim font-bold font-sans">Live AST Mindmap Structure</div>
+                <div class="p-3 rounded-lg bg-dark-bg border border-dark-border font-mono text-3xs space-y-1.5 leading-relaxed">
+                  <div class="text-brand-400 font-bold">● code-review (Root)</div>
+                  <div class="pl-4 text-purple-400">├── 📄 Frontmatter (Model: Claude 3.5 Sonnet)</div>
+                  <div class="pl-4 text-amber-400">├── 📝 Description (Code Quality Agent)</div>
+                  <div class="pl-4 text-emerald-400">├── 💡 Examples (2 Few-Shot Diffs)</div>
+                  <div class="pl-4 text-blue-400">└── 🛡️ Constraints (No raw secrets)</div>
+                </div>
+                <div class="text-3xs text-dark-dim font-sans">Interactive AST renders prompt hierarchy with instant visual diff feedback.</div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 1,
+        title: 'Chapter 2: Real-Time BPE Token Budgeting',
+        badge: '2. Token Budgeting',
+        filename: 'delulu-studio / token-analyzer',
+        startTime: 15,
+        render: () => `
+          <div class="space-y-4 animate-fade-in">
+            <!-- Token Metrics Bar -->
+            <div class="grid grid-cols-3 gap-3">
+              <div class="p-4 rounded-xl bg-dark-surface border border-dark-border space-y-1 text-center">
+                <div class="text-2xs text-dark-dim uppercase font-bold">Estimated Tokens</div>
+                <div class="text-xl font-extrabold text-amber-400 font-mono">⚡ 370</div>
+                <div class="text-3xs text-dark-muted">Code: ~3.2 chars/tok</div>
+              </div>
+              <div class="p-4 rounded-xl bg-dark-surface border border-dark-border space-y-1 text-center">
+                <div class="text-2xs text-dark-dim uppercase font-bold">Context Window</div>
+                <div class="text-xl font-extrabold text-emerald-400 font-mono">0.29%</div>
+                <div class="text-3xs text-dark-muted">of 128k budget</div>
+              </div>
+              <div class="p-4 rounded-xl bg-dark-surface border border-dark-border space-y-1 text-center">
+                <div class="text-2xs text-dark-dim uppercase font-bold">Est. Cost / 1k Calls</div>
+                <div class="text-xl font-extrabold text-purple-400 font-mono">$1.11</div>
+                <div class="text-3xs text-dark-muted">Claude 3.5 Sonnet tier</div>
+              </div>
+            </div>
+
+            <!-- Token Section Breakdown Visualizer -->
+            <div class="p-4 rounded-xl bg-dark-surface2 border border-dark-border space-y-3">
+              <div class="flex items-center justify-between text-xs font-semibold text-white">
+                <span>Prompt Section Density Breakdown</span>
+                <span class="text-2xs font-mono text-brand-400">Optimal Lean Budget</span>
+              </div>
+              
+              <!-- Density Progress Bars -->
+              <div class="space-y-2 text-3xs font-mono">
+                <div>
+                  <div class="flex justify-between mb-1 text-dark-muted">
+                    <span>Frontmatter & Headers</span>
+                    <span>42 tokens (11%)</span>
+                  </div>
+                  <div class="w-full bg-dark-bg h-1.5 rounded-full overflow-hidden">
+                    <div class="bg-purple-500 h-full w-[11%]"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between mb-1 text-dark-muted">
+                    <span>Few-Shot TypeScript Examples</span>
+                    <span>218 tokens (59%)</span>
+                  </div>
+                  <div class="w-full bg-dark-bg h-1.5 rounded-full overflow-hidden">
+                    <div class="bg-amber-500 h-full w-[59%]"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between mb-1 text-dark-muted">
+                    <span>Constraints & Guardrails</span>
+                    <span>110 tokens (30%)</span>
+                  </div>
+                  <div class="w-full bg-dark-bg h-1.5 rounded-full overflow-hidden">
+                    <div class="bg-emerald-500 h-full w-[30%]"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 2,
+        title: 'Chapter 3: Multi-Model Evals & Benchmark Testing',
+        badge: '3. AI Evals Studio',
+        filename: 'delulu-studio / eval-runner',
+        startTime: 30,
+        render: () => `
+          <div class="space-y-4 animate-fade-in">
+            <div class="flex items-center justify-between p-3 rounded-xl bg-dark-surface border border-dark-border">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-xs font-semibold text-white">Active Eval Benchmark: <code class="text-brand-400 font-mono">code-review</code></span>
+              </div>
+              <span class="text-2xs font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-semibold">2 / 2 PASSED (100%)</span>
+            </div>
+
+            <!-- Evals Comparison Table -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono">
+              <!-- Runner 1: Claude 3.5 Sonnet -->
+              <div class="p-4 rounded-xl bg-dark-surface2 border border-dark-border space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">🤖 Claude 3.5 Sonnet</span>
+                  <span class="text-3xs text-emerald-400 px-1.5 py-0.5 rounded bg-emerald-500/10 font-bold">✓ PASS (340ms)</span>
+                </div>
+                <div class="p-2.5 rounded bg-dark-bg border border-dark-border text-3xs text-dark-text leading-relaxed">
+                  - Identified 2 missing type annotations.<br/>
+                  - Flagged boundary condition bug.<br/>
+                  - Generated compliant clean diff.
+                </div>
+              </div>
+
+              <!-- Runner 2: Local Ollama Llama 3 -->
+              <div class="p-4 rounded-xl bg-dark-surface2 border border-dark-border space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">🦙 Ollama Llama 3.3 (Local)</span>
+                  <span class="text-3xs text-emerald-400 px-1.5 py-0.5 rounded bg-emerald-500/10 font-bold">✓ PASS (410ms)</span>
+                </div>
+                <div class="p-2.5 rounded bg-dark-bg border border-dark-border text-3xs text-dark-text leading-relaxed">
+                  - Validated zero cloud API latency.<br/>
+                  - Correctly followed few-shot output format.<br/>
+                  - Enforced negative guardrail.
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 3,
+        title: 'Chapter 4: 1-Click Code Export & Multi-Agent Symlinks',
+        badge: '4. Export & Distribute',
+        filename: 'delulu-studio / export-dialog',
+        startTime: 45,
+        render: () => `
+          <div class="space-y-4 animate-fade-in">
+            <div class="flex items-center justify-between p-3 rounded-xl bg-dark-surface border border-dark-border">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-semibold text-white">📦 1-Click Multi-Agent Export Engine</span>
+              </div>
+              <span class="text-2xs font-mono text-brand-400 font-semibold">Ready for Distribution</span>
+            </div>
+
+            <!-- Export Formats Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs font-mono">
+              <div class="p-3 rounded-xl bg-dark-surface2 border border-brand-500/40 space-y-1">
+                <div class="text-brand-400 font-bold">MCP Tool</div>
+                <div class="text-3xs text-dark-muted">Claude JSON Schema</div>
+              </div>
+              <div class="p-3 rounded-xl bg-dark-surface2 border border-dark-border space-y-1">
+                <div class="text-emerald-400 font-bold">OpenAI Tool</div>
+                <div class="text-3xs text-dark-muted">Function Calling</div>
+              </div>
+              <div class="p-3 rounded-xl bg-dark-surface2 border border-dark-border space-y-1">
+                <div class="text-amber-400 font-bold">Python</div>
+                <div class="text-3xs text-dark-muted">Async Wrapper</div>
+              </div>
+              <div class="p-3 rounded-xl bg-dark-surface2 border border-dark-border space-y-1">
+                <div class="text-purple-400 font-bold">TypeScript</div>
+                <div class="text-3xs text-dark-muted">Typed Definitions</div>
+              </div>
+            </div>
+
+            <!-- Code Preview Block -->
+            <div class="p-3 rounded-xl bg-dark-bg border border-dark-border font-mono text-3xs text-dark-text overflow-x-auto leading-relaxed">
+              <span class="text-purple-400">export const</span> <span class="text-brand-300">CodeReviewSkill</span> = {<br/>
+              &nbsp;&nbsp;name: <span class="text-emerald-300">'code-review'</span>,<br/>
+              &nbsp;&nbsp;model: <span class="text-emerald-300">'claude-3-5-sonnet-20241022'</span>,<br/>
+              &nbsp;&nbsp;temperature: <span class="text-amber-300">0.2</span>,<br/>
+              &nbsp;&nbsp;symlinkTargets: [<span class="text-emerald-300">'~/.claude/skills'</span>, <span class="text-emerald-300">'.cursor/skills'</span>, <span class="text-emerald-300">'~/.gemini/skills'</span>]<br/>
+              };
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    let currentChapterIndex = 0;
+    let isPlaying = false;
+    let playbackSeconds = 0;
+    const TOTAL_DURATION = 60;
+    let videoInterval = null;
+
+    function switchVideoChapter(index) {
+      currentChapterIndex = index;
+      playbackSeconds = CHAPTERS[index].startTime;
+      updateVideoUI();
+    }
+
+    function updateVideoUI() {
+      const chapter = CHAPTERS[currentChapterIndex];
+      const videoContent = document.getElementById('video-content');
+      const videoBadge = document.getElementById('video-badge');
+      const videoFilename = document.getElementById('video-filename');
+      const videoTimer = document.getElementById('video-timer');
+      const videoProgress = document.getElementById('video-progress');
+
+      if (videoContent) videoContent.innerHTML = chapter.render();
+      if (videoBadge) videoBadge.innerText = chapter.badge;
+      if (videoFilename) videoFilename.innerText = chapter.filename;
+      
+      const mins = Math.floor(playbackSeconds / 60);
+      const secs = (playbackSeconds % 60).toString().padStart(2, '0');
+      if (videoTimer) videoTimer.innerText = `${mins}:${secs} / 1:00`;
+      if (videoProgress) videoProgress.style.width = `${(playbackSeconds / TOTAL_DURATION) * 100}%`;
+
+      // Update active chapter button styles
+      for (let i = 0; i < 4; i++) {
+        const btn = document.getElementById(`chapter-btn-${i}`);
+        if (btn) {
+          if (i === currentChapterIndex) {
+            btn.className = 'px-3 py-2.5 text-left transition-all hover:text-white bg-dark-surface3 text-brand-400 font-semibold flex items-center justify-between';
+          } else {
+            btn.className = 'px-3 py-2.5 text-left transition-all hover:text-white text-dark-muted flex items-center justify-between';
+          }
+        }
+      }
+    }
+
+    function toggleVideoPlayback() {
+      isPlaying = !isPlaying;
+      const playIcon = document.getElementById('video-play-icon');
+      const playText = document.getElementById('video-play-text');
+      const playBtn = document.getElementById('video-play-btn');
+
+      if (isPlaying) {
+        if (playIcon) playIcon.innerText = '⏸';
+        if (playText) playText.innerText = 'Pause';
+        if (playBtn) playBtn.className = 'p-2 rounded-lg bg-amber-600 hover:bg-amber-700 text-white transition-all shadow-sm flex items-center gap-1.5 text-xs font-semibold px-3';
+        
+        videoInterval = setInterval(() => {
+          playbackSeconds++;
+          if (playbackSeconds >= TOTAL_DURATION) {
+            playbackSeconds = 0;
+            currentChapterIndex = 0;
+          } else if (playbackSeconds === 15) {
+            currentChapterIndex = 1;
+          } else if (playbackSeconds === 30) {
+            currentChapterIndex = 2;
+          } else if (playbackSeconds === 45) {
+            currentChapterIndex = 3;
+          }
+          updateVideoUI();
+        }, 1000);
+      } else {
+        if (playIcon) playIcon.innerText = '▶';
+        if (playText) playText.innerText = 'Play Demo';
+        if (playBtn) playBtn.className = 'p-2 rounded-lg bg-brand-500 hover:bg-brand-600 text-white transition-all shadow-sm flex items-center gap-1.5 text-xs font-semibold px-3';
+        if (videoInterval) clearInterval(videoInterval);
+      }
+    }
+
+    function scrubVideo(event) {
+      const rect = event.currentTarget.getBoundingClientRect();
+      const clickX = event.clientX - rect.left;
+      const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+      playbackSeconds = Math.floor(ratio * TOTAL_DURATION);
+      
+      if (playbackSeconds < 15) currentChapterIndex = 0;
+      else if (playbackSeconds < 30) currentChapterIndex = 1;
+      else if (playbackSeconds < 45) currentChapterIndex = 2;
+      else currentChapterIndex = 3;
+
+      updateVideoUI();
+    }
+
+    // Initialize Video Player on mount
+    updateVideoUI();
   </script>
 </body>
 </html>

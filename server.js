@@ -32,9 +32,11 @@ const MIME_TYPES = {
 const server = http.createServer((req, res) => {
   // Normalize URL
   let reqPath = decodeURI(req.url.split('?')[0]);
-  if (reqPath === '/') reqPath = '/index.html';
+  if (reqPath === '' || reqPath === '/') reqPath = '/index.html';
+  if (reqPath === '/docs' || reqPath === '/docs/') reqPath = '/docs/index.html';
 
-  let filePath = path.join(DIST_DIR, reqPath);
+  const segments = reqPath.split('/').filter(Boolean);
+  let filePath = path.join(DIST_DIR, ...segments);
 
   // Security: prevent directory traversal
   if (!filePath.startsWith(DIST_DIR)) {
@@ -44,18 +46,18 @@ const server = http.createServer((req, res) => {
   }
 
   fs.stat(filePath, (err, stats) => {
-    if (err || !stats.isFile()) {
+    if (err) {
       // SPA Fallback: serve index.html for unknown routes
       filePath = path.join(DIST_DIR, 'index.html');
+    } else if (stats.isDirectory()) {
+      filePath = path.join(filePath, 'index.html');
     }
 
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
-    // CORS & CSP Headers for remote hosting
+    // CORS Headers
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
-    res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
 
     fs.readFile(filePath, (readErr, content) => {
       if (readErr) {

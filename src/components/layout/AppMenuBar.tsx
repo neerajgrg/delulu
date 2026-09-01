@@ -12,6 +12,7 @@ import {
   SunIcon,
   MoonIcon,
   BotIcon,
+  BookOpenIcon,
 } from '../shared/Icons';
 
 interface MenuItem {
@@ -210,6 +211,13 @@ export default function AppMenuBar() {
           shortcut: '⌘,',
           icon: <SettingsIcon size={14} />,
           onClick: () => setView('settings'),
+        },
+        {
+          id: 'view-docs',
+          label: 'Developer Documentation',
+          shortcut: '⌘D',
+          icon: <BookOpenIcon size={14} />,
+          onClick: () => setView('docs'),
         },
         { id: 'div-view-1', label: '', divider: true },
         {

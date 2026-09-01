@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useStore, type MainView } from './store/useStore';
 import TitleBar from './components/layout/TitleBar';
 import ActivityBar from './components/layout/ActivityBar';
@@ -14,6 +14,7 @@ import EvalsView from './components/views/EvalsView';
 import AgentsView from './components/views/AgentsView';
 import SettingsView from './components/views/SettingsView';
 import DocsView from './components/views/DocsView';
+import ShortcutsModal from './components/modals/ShortcutsModal';
 
 export default function App() {
   const {
@@ -25,6 +26,8 @@ export default function App() {
     setCommandPaletteOpen,
     isCommandPaletteOpen,
   } = useStore();
+
+  const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
 
   useEffect(() => {
     init();
@@ -39,6 +42,13 @@ export default function App() {
       if (isMeta && (e.key === 'k' || e.key === 'p')) {
         e.preventDefault();
         setCommandPaletteOpen(!isCommandPaletteOpen);
+        return;
+      }
+
+      // ⌘/ or ⌘? -> Shortcuts Reference
+      if (isMeta && (e.key === '/' || e.key === '?')) {
+        e.preventDefault();
+        setIsShortcutsOpen((prev) => !prev);
         return;
       }
 
@@ -63,6 +73,13 @@ export default function App() {
         return;
       }
 
+      // ⌘D -> Developer Docs
+      if (isMeta && e.key === 'd' && !e.shiftKey) {
+        e.preventDefault();
+        setView('docs');
+        return;
+      }
+
       // ⌘, -> Settings & AI Agents
       if (isMeta && e.key === ',') {
         e.preventDefault();
@@ -75,8 +92,8 @@ export default function App() {
         const viewMap: Record<string, MainView> = {
           '1': 'welcome',
           '2': 'editor',
-          '3': 'gallery',
-          '4': 'evals',
+          '3': 'evals',
+          '4': 'gallery',
           '5': 'settings',
         };
         if (viewMap[e.key]) {
@@ -125,6 +142,12 @@ export default function App() {
 
       {/* Global Command Palette Modal */}
       <CommandPalette />
+
+      {/* Shortcuts Modal */}
+      <ShortcutsModal
+        isOpen={isShortcutsOpen}
+        onClose={() => setIsShortcutsOpen(false)}
+      />
     </div>
   );
 }

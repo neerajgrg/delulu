@@ -14,6 +14,7 @@ import {
   CheckIcon,
 } from '../shared/Icons';
 import { analyzeSkillTokens } from '../../lib/tokenCounter';
+import ExportModal from '../modals/ExportModal';
 
 type ViewMode = 'visual' | 'mindmap' | 'code';
 
@@ -41,6 +42,7 @@ export default function EditorView() {
   const isScriptFile = currentTab?.path?.match(/\.(py|ts|js|json|sh|yaml)$/i);
   const [viewMode, setViewMode] = useState<ViewMode>(isScriptFile ? 'code' : 'visual');
   const [showTips, setShowTips] = useState(false);
+  const [isExportOpen, setIsExportOpen] = useState(false);
   const folder = workspaceFolder?.split('/').pop() || 'workspace';
 
   if (tabs.length === 0) {
@@ -169,6 +171,16 @@ export default function EditorView() {
 
             <div className="h-4 w-px bg-line" />
 
+            {/* Export & Share Action */}
+            <button
+              onClick={() => setIsExportOpen(true)}
+              className="btn-outline py-1 px-2.5 text-xs flex items-center gap-1.5 text-ink-muted hover:text-ink"
+              title="Export as MCP Tool JSON, OpenAI Schema, TS, or Python"
+            >
+              <FileCodeIcon size={12} />
+              <span>Export…</span>
+            </button>
+
             {/* AI Tips Dropdown Trigger */}
             <button
               onClick={() => setShowTips(!showTips)}
@@ -192,6 +204,16 @@ export default function EditorView() {
           </div>
         )}
       </div>
+
+      {/* Export & Distribute Modal */}
+      {currentTab && (
+        <ExportModal
+          isOpen={isExportOpen}
+          onClose={() => setIsExportOpen(false)}
+          skillName={currentSkill.name}
+          content={currentTab.content}
+        />
+      )}
 
       {/* ── AI Tips Floating Flyout ── */}
       {showTips && currentTab && (

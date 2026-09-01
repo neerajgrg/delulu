@@ -1,7 +1,30 @@
 {
   "name": "delulu",
   "version": "0.1.0",
-  "description": "The IDE that's delusionally good at AI skills",
+  "description": "The Universal Open-Source IDE & Benchmark Studio for AI Agent Skills",
+  "author": "Neeraj Garg <neerajgrg93@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://neerajgrg.github.io/delulu/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neerajgrg/delulu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/neerajgrg/delulu/issues"
+  },
+  "keywords": [
+    "ai",
+    "agent-skills",
+    "ide",
+    "prompt-engineering",
+    "evals",
+    "claude-code",
+    "cursor",
+    "gemini",
+    "ollama",
+    "mcp",
+    "developer-tools"
+  ],
   "main": "dist-electron/main.js",
   "scripts": {
     "dev": "concurrently -n vite,electron -c cyan,magenta \"npm run dev:vite\" \"npm run dev:electron\"",
@@ -13,6 +36,7 @@
     "package": "npm run build && electron-builder",
     "preview": "vite preview",
     "serve": "node server.js",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
     "typecheck": "tsc --noEmit && tsc -p tsconfig.electron.json --noEmit"
   },
   "build": {

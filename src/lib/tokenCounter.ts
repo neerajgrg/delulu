@@ -16,6 +16,7 @@ export interface TokenStats {
     examplesTokens: number;
     constraintsTokens: number;
     bodyTokens: number;
+    codeBlockTokens: number;
   };
 }
 
@@ -68,6 +69,7 @@ export function analyzeSkillTokens(rawContent: string, maxContextWindow: number 
         examplesTokens: 0,
         constraintsTokens: 0,
         bodyTokens: 0,
+        codeBlockTokens: 0,
       },
     };
   }
@@ -107,6 +109,13 @@ export function analyzeSkillTokens(rawContent: string, maxContextWindow: number 
     constraintsTokens = countTokens(constraintsMatch[1]);
   }
 
+  // Extract Code Blocks
+  const codeBlocks = rawContent.match(/```[\s\S]*?```/g) || [];
+  let codeBlockTokens = 0;
+  for (const block of codeBlocks) {
+    codeBlockTokens += Math.ceil(block.length / 3.2);
+  }
+
   const bodyTokens = Math.max(0, totalTokens - frontmatterTokens);
   const contextPercentage = Number(((totalTokens / maxContextWindow) * 100).toFixed(2));
   
@@ -126,6 +135,7 @@ export function analyzeSkillTokens(rawContent: string, maxContextWindow: number 
       examplesTokens,
       constraintsTokens,
       bodyTokens,
+      codeBlockTokens,
     },
   };
 }
